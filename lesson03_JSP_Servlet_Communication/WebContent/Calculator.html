@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Calculator Servlet에서 a = 10 , b = 20에 값을 넣어줍니다. -->
+	<a href="Calculator?a=10&b=20">10, 20계산하기</a>
+	<br>
+	<a href="Gugudan?dan=5&start=2&end=9">구구단 중 5단 출력</a>
+	<br>
+	<hr>
+
+	<!-- 입력받아서 요청하기 -->
+	<!-- button을 누르면 action에 있는 Calculator Servlet으로 요청 -->
+	<form action="Calculator">
+		a : <input name="a"><br> 
+		b : <input name="b"><br>
+		<button>계산</button>
+	</form>
+
+	<hr>
+	<!-- form 안에서 method ="get"을 선언하였습니다. 기본값입니다. -->
+	<form action="Gugudan" method="get">
+		단<input name="dan"> <br> 
+		시작<input name="start"> <br>
+		끝<input name="end"> <br> 
+		버튼 태그로 만든 버튼입니다.	<button>출력</button>
+	</form>
+	
+	<hr>
+	<!-- form 안에서 method ="post"을 선언하였습니다. 기본값입니다. -->
+	<form action="Gugudan" method="post">
+		단<input name="dan"> <br> 
+		시작<input name="start"> <br>
+		끝<input name="end"> <br> 
+		input으로만든 버튼입니다.<input type="submit" value="출력"> <br>
+		버튼 태그로 만든 버튼입니다.	<button>출력</button>
+	</form>
+</body>
+</html>

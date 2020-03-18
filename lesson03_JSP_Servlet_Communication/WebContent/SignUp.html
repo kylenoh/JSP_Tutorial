@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Login" method="post">
+		이름 : <input type="text" name="form_name"><br>
+		암호 : <input type="password" name="form_password"><br>
+		성별 : 남성<input type="radio" name="form_gender" value="M" checked="checked">,
+			   여성<input type="radio" name="form_gender" value="F"><br>
+		취미 : 여행<input type="checkbox" name="form_hobby" value="Travel">,
+			   요리<input type="checkbox" name="form_hobby" value="Cooking">,
+			   컴퓨터<input type="checkbox" name="form_hobby" value="Computer"><br>
+		거주지 : <select name="form_location">
+					<option value="seoul" selected="selected">서울</option>
+					<option value="gyeonggi" selected="selected">경기도</option>
+					<option value="jeju" selected="selected">제주도</option>
+					<option value="gangwon" selected="selected">강원도</option>
+				</select>
+				<input type="submit" value="signup">
+				<input type="reset" value="지우기"> 
+	</form>
+</body>
+</html>
