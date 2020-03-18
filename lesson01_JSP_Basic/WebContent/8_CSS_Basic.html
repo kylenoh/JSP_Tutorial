@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- 
+색깔 
+	그냥 영어로
+	#RRGGBB
+	#RRGGBBAA
+-->
+<!-- 
+CSS(Cascading Style Sheet) 
+HTML의 DOM객체에 디자인을 주는 디자인 언어(인터프리터 방식)
+
+CSS 문법
+선택자 {
+	속성명:값;
+	속성명:값;		...
+}	
+	
+선택자(Selector)
+	- 기본형
+	태그명 :		해당파일에 있는 태그 전부다 선택
+	#id :		id가 같은 것만 선택(한 Html에 중복 사용x) 
+	.class :	class가 같은 것들 선택
+	
+	- 상태선택자, 가상선택자 
+	기본형:XXX
+	active : 클릭 중인 상태
+	hover : 마우스 올려놓는 중인 상태
+	visited : 방문한적 있는 링크인 상태
+	focus : 선택해서 작업 중인 상태
+
+	위치
+	- 1.Html파일 내부에
+	- 2.CSS파일을 따로 작성, Html에서 그 파일을 불러오는 방식
+	- 3.DOM객체 개별적으로
+	
+-->
+<style type="text/css">
+h1{
+	color: white;
+	background-color: #0097A788;
+}
+h2{
+	color: red;
+}
+#h2Id{
+	font-size: 50pt;
+}
+.cClass{
+	text-decoration: line-through;
+}
+h3, h4{
+	background-color: yellow;
+}
+a h3{
+	font-size: 5pt;
+}
+h4.common{
+	color:red;
+}
+.asd{
+	font-size: 4pt;
+}
+h4.h2Id.common{
+	text-decoration: underline;
+}
+a:active{
+	font-size: 20pt;
+}
+h1:hover {
+	color: red;
+}
+a:visited {
+	color:orange;
+}
+input:focus {
+	color: red;
+}
+.divClass{
+	margin:15px;
+	border: blue solid 3px;
+	background-color: blue;
+	color: white;
+	font-size: 20pt;
+	width: 100px;
+	height: 100px;
+	
+	box-shadow: 5px 7px 10px green; /* x y 번짐 색깔 */
+	text-shadow: 2px 2px 2px orange;
+	
+	font-weight: 900; /* 굵게 */
+	font-family:"DOSMyungjo";
+	border-radius: 20px;  /* 모서리 둥글게 */
+	transition: all 1s ease-in;
+	float: left; 
+}
+	/*		ease-in : 점점가속		ease-out : 점점감속	*/
+.divClass:hover{
+	background-color: orange;
+	border:red solid 3px;
+	box-shadow: 10px 10px 20px black;
+	text-shadow: 2px 2px 2px black;
+	font-family: 돋움;
+	border-radius: 10px;
+}
+#dviId{
+	border: red solid 3px;
+	width: 100px;
+	height: 100px;
+	
+	/* position: absolute; */ /* html기준으로 좌표 */
+	position: fixed;		/* 브라우저기준으로 좌표(스크롤 무시) */
+	top: 10px;
+	right: 10px;
+}
+</style>
+</head>
+<body>
+	<a href="https://www.naver.com">네이버로</a>
+	<h1>h1태그입니다.</h1>
+	<h2 id="h2Id">h2태그입니다.</h2>
+	<h1 class="cClass">h1 cClass태그입니다.</h1>
+	<h2 class="cClass">h2 cClass태그입니다.</h2>
+	<a href="https://www.google.com">구글로</a>
+	<h4 class="common asd">h4 Common태그입니다.</h4>
+	<h3 class="common">h4 Common태그입니다.</h3>
+	<h4 class="common">h4 Common태그입니다.</h4>
+	<div id="dviId">divId입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+	<div class="divClass">divClass입니다.</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

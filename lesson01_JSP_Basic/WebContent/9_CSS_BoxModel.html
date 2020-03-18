@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- 
+선 종류
+	solid dotted dashed double outset inset ridge groove
+ -->
+<style type="text/css">
+div{
+	margin: 30px;/* 외부 여백 */
+
+	/* border: 색깔 선종류 두께; */
+	border-left: red outset 5px;
+	border-top: blue outset 5px;
+	border-right: #4DD0E1 outset 5px;
+	border-bottom: black outset 5px;
+	
+	padding: 10px; /* 내부 여백 */
+	
+	width: 300px; /* %단위도 가능 */
+	height: 400px;
+	
+	cursor: pointer;
+}
+div:active {
+	border: #4DD0E1 inset 5px;
+}
+span {
+	border: orange solid 3px;
+}
+</style>
+</head>
+<body>
+	<div>CSS는 해야겠는데 딱히 줄 DOM객체 없으면</div>
+	<span>div, span을 사용</span>
+	<span>div : 줄바꿈 내장, span : 줄바꿈없음</span>
+</body>
+</html>
+
+
