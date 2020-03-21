@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>lesson05_JSP_Servlet_DataShare</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>imageDirectory</param-name>
+    <param-value>/upload/images</param-value>
+  </context-param>
+  <context-param>
+    <param-name>devServer</param-name>
+    <param-value>127.0.0.1</param-value>
+  </context-param>
+  <context-param>
+    <param-name>prodServer</param-name>
+    <param-value>127.0.0.1</param-value>
+  </context-param>
+  <context-param>
+    <param-name>developer</param-name>
+    <param-value>kyleNoh</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>ServletJSP</servlet-name>
+    <jsp-file>/ServletJSP_SetAttribute.jsp</jsp-file>
+    <init-param>
+      <param-name>adminId</param-name>
+      <param-value>Admin</param-value>
+    </init-param>
+    <init-param>
+      <param-name>adminPw</param-name>
+      <param-value>1234</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletJSP</servlet-name>
+    <url-pattern>/ServletJSP_SetAttribute.jsp</url-pattern>
+  </servlet-mapping>
+</web-app>
