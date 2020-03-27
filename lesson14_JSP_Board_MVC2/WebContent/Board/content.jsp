@@ -33,7 +33,7 @@
 		</tbody>
 	</table>
 	
-	<a href="index.html">목록으로 이동</a>
-	<a href="deleteController?BOARD_IDX=+${boardVar.board_idx }">삭제</a>
+	<a href="index.html">목록으로 이동</a>&nbsp;&nbsp;
+	<a href="deleteController?BOARD_IDX=${boardVar.board_idx }">삭제</a>
 </body>
 </html>

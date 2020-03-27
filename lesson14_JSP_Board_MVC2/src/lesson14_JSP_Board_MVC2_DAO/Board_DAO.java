@@ -130,11 +130,68 @@ public class Board_DAO {
 
 	}
 	
-	public void update(HttpServletRequest request, HttpServletResponse response) {
-		
+	public static void update(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			int paramIdx = Integer.parseInt(request.getParameter("BOARD_IDX"));
+			String board_title = request.getParameter("BOARD_TITLE"); 
+			String board_content = request.getParameter("BOARD_CONTENT");
+			
+			System.out.println(paramIdx);
+			System.out.println(board_title);
+			System.out.println(board_content);
+			
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/Oracle11g");
+			con = dataSource.getConnection();
+			String sql = "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ? WHERE BOARD_IDX = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board_title);
+			pstmt.setString(2, board_content);
+			pstmt.setInt(3, paramIdx);
+			
+			if (pstmt.executeUpdate() == 1) {
+				request.setAttribute("result", "UPADTE SUCCESS");
+			}else {
+				request.setAttribute("result", "UPADTE FAIL");
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}}
+			if (con != null) {try {con.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
 	}
 	
-	public void delete(HttpServletRequest request, HttpServletResponse response) {
-		
+	public static void delete(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			int paramIdx = Integer.parseInt(request.getParameter("BOARD_IDX"));
+			
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/Oracle11g");
+			con = dataSource.getConnection();
+			String sql = "DELETE FROM BOARD WHERE BOARD_IDX = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, paramIdx);
+			
+			if (pstmt.executeUpdate() == 1) {
+				request.setAttribute("result", "DELETE SUCCESS");
+			}else {
+				request.setAttribute("result", "DELETE FAIL");
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}}
+			if (con != null) {try {con.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
+
 	}
 }
