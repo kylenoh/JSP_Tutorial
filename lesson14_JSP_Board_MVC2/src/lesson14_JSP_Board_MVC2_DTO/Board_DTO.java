@@ -26,7 +26,6 @@ public class Board_DTO {
 		this.board_content = board_content;
 	}
 
-//	GETTER & SETTER
 	public int getBoard_idx() {
 		return board_idx;
 	}
@@ -74,6 +73,8 @@ public class Board_DTO {
 	public void setBoard_content(String board_content) {
 		this.board_content = board_content;
 	}
-	
+
+//	GETTER & SETTER
+
 	
 }

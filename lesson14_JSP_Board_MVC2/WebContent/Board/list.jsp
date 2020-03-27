@@ -10,23 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-		String driver="oracle.jdbc.driver.OracleDriver";
-		String url="jdbc:oracle:thin:@localhost:1521:orcl";
-		String id = "tutorial";
-		String pw = "12341234";
-		
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet result = null;
-		
-		try {
-			Class.forName(driver);
-			con=DriverManager.getConnection(url,id,pw);
-			stmt=con.createStatement();
-			String sql = "SELECT * FROM BOARD";
-			result = stmt.executeQuery(sql);
-%>
+
 
 <body>
 	<h4>컨트롤러에서 전달받은 값을 출력합니다. ${result }</h4>
@@ -44,54 +28,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="board" items="${BOARD }">
+			<c:forEach var="boardVar" items="${BOARD }">
 				<tr>
-					<td>${board.BOARD_IDX }</td>
-					<td><a href="contentController?BOARD_IDX=${board.BOARD_IDX }">${board.BOARD_TITLE }</a></td>
-					<td>${board.BOARD_WRITER }</td>
-					<td>${board.BOARD_WRITEDATE }</td>
-					<td>${board.BOARD_COUNT }</td>
+					<td>${boardVar.board_idx }</td>
+					<td><a href="contentController?BOARD_IDX=${boardVar.board_idx }">${boardVar.board_title }</a></td>
+					<td>${boardVar.board_writer }</td>
+					<td>${boardVar.board_writedate }</td>
+					<td>${boardVar.board_count }</td>
 				</tr>
 			</c:forEach>
-<%
-			while (result.next()) {
-				out.print("<tr>");
-				out.print("<td>"+result.getString("BOARD_IDX")+"</td>");
-				out.print("<td><a href='content.jsp?BOARD_IDX="+result.getString("BOARD_IDX")+"'>"+result.getString("BOARD_TITLE")+"</a></td>");
-				out.print("<td>"+result.getString("BOARD_WRITER")+"</td>");
-				out.print("<td>"+result.getString("BOARD_WRITEDATE")+"</td>");
-				out.print("<td>"+result.getString("BOARD_COUNT")+"</td>");
-				out.print("</tr>");
-			}
-%>
 		</tbody>
 	</table>
 	
 	<!-- WebContent/Board/write.jsp 로 이동합니다. -->
 	<a href="Board/write.jsp">글쓰기로 이동</a>
-	
-<%
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-
-%>
 </body>
 </html>

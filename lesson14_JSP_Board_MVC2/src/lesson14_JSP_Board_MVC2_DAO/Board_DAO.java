@@ -28,7 +28,7 @@ public class Board_DAO {
 			con = dataSource.getConnection();
 			String sql = "SELECT * FROM BOARD ORDER BY BOARD_IDX";
 			pstmt = con.prepareStatement(sql);
-			result = pstmt.executeQuery(sql);
+			result = pstmt.executeQuery();
 			
 			ArrayList<Board_DTO> board = new ArrayList<>();
 			Board_DTO BoardDTO;
@@ -44,6 +44,45 @@ public class Board_DAO {
 			}
 			
 			request.setAttribute("BOARD", board);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {pstmt.close();} catch (SQLException e) {}}
+			if (con != null) {try {con.close();} catch (SQLException e) {}}
+			if (result != null) {try {result.close();} catch (SQLException e) {}}
+		}
+
+	}
+	
+	public static void selectByIdx(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		try {
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/Oracle11g");
+			
+			int paramIdx = Integer.parseInt(request.getParameter("BOARD_IDX"));
+			
+			con = dataSource.getConnection();
+			String sql = "SELECT * FROM BOARD WHERE BOARD_IDX = ? ORDER BY BOARD_IDX";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, paramIdx);
+			result = pstmt.executeQuery();
+			
+			result.next();
+
+			Board_DTO BoardDTO = new Board_DTO();
+			BoardDTO.setBoard_idx(result.getInt("BOARD_IDX"));
+			BoardDTO.setBoard_title(result.getString("BOARD_TITLE"));
+			BoardDTO.setBoard_writer(result.getString("BOARD_WRITER"));
+			BoardDTO.setBoard_writedate(result.getString("BOARD_WRITEDATE"));
+			BoardDTO.setBoard_count(result.getString("BOARD_COUNT"));
+			BoardDTO.setBoard_content(result.getString("BOARD_CONTENT"));
+			
+			request.setAttribute("boardVar", BoardDTO);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

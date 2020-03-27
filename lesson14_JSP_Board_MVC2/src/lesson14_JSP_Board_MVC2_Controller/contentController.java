@@ -9,17 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import lesson14_JSP_Board_MVC2_DAO.Board_DAO;
 
-@WebServlet("/listController")
-public class listController extends HttpServlet {
+@WebServlet("/contentController")
+public class contentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public listController() {
-        super();
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Board_DAO.select(request, response);
-		request.getRequestDispatcher("Board/list.jsp").forward(request, response);
+		request.setCharacterEncoding("EUC-KR"); 
+		Board_DAO.selectByIdx(request, response);
+		request.getRequestDispatcher("Board/content.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

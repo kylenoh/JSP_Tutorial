@@ -21,7 +21,8 @@ public class writeController extends HttpServlet {
 		
 //		데이터 베이스 접근을 담당하는 DAO에 insert 를 호출합니다. 
 		Board_DAO.insert(request, response);
-		
+//		데이터 베이스 접근을 담당하는 DAO에 select 를 호출합니다. 
+		Board_DAO.select(request, response);
 //		request에 값을 담아 View(list.jsp)페이지로 이동 합니다.
 		request.getRequestDispatcher("Board/list.jsp").forward(request, response);
 
